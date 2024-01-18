@@ -94,12 +94,6 @@ export class EditOrderComponent implements OnInit {
 
   updateOrder(): void {
     if (this.orderId === null || !this.orderForm.value.numberOrder) {
-
-      return
-    }
-
-    if (this.orderId === null) {
-
       return
     }
 
