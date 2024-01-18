@@ -1,0 +1,47 @@
+<h1 class="text-4xl text-amber-400 mb-6 text-center font-medium">Create a Product</h1>
+<form class="max-w-sm mx-auto" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="mb-5">
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Product name</label>
+    <input formControlName="name" name="name" type="text" id="name"
+      class="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      required>
+    <div class="text-red-600 font-medium" *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+      Name is required
+    </div>
+  </div>
+  <div class="mb-5">
+    <label for="quantity" class="block mb-2 text-sm font-medium text-gray-900 ">Change quantity</label>
+    <input formControlName="quantity" name="quantity" type="number" id="quantity"
+      class="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      required>
+    <div class="text-red-600 font-medium"
+      *ngIf="productForm.get('quantity')?.invalid && productForm.get('name')?.touched">
+      Quantity is required
+    </div>
+    <div class="text-red-600 font-medium" *ngIf="productForm.get('quantity')?.errors?.['min']">
+      Quantity must be greater than 0
+    </div>
+    <div class="text-red-600 font-medium" *ngIf="productForm.get('quantity')?.errors?.['max']">
+      Quantity must be less than 500
+    </div>
+  </div>
+  <div class="mb-5">
+    <label for="unitPrice" class="block mb-2 text-sm font-medium text-gray-900 ">Product price</label>
+    <input formControlName="unitPrice" name="unitPrice" type="number" id="unitPrice"
+      class="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      required>
+    <div class="text-red-600 font-medium"
+      *ngIf="productForm.get('unitPrice')?.invalid && productForm.get('name')?.touched">
+      Price is required
+    </div>
+    <div class="text-red-600 font-medium" *ngIf="productForm.get('unitPrice')?.errors?.['min']">
+      Price must be greater than 0
+    </div>
+    <div class="text-red-600 font-medium" *ngIf="productForm.get('unitPrice')?.errors?.['max']">
+      Price must be less than 20000
+    </div>
+  </div>
+
+  <button type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+</form>
