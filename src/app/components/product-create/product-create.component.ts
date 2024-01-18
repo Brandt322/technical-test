@@ -11,7 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductCreateComponent implements OnInit {
 
-  product: Product = new Product();
+  product: Product = new Product()
   productForm: FormGroup
 
   constructor(private productService: ProductService, private router: Router) { }
@@ -21,26 +21,26 @@ export class ProductCreateComponent implements OnInit {
       'name': new FormControl(null, Validators.required),
       'quantity': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(500)]),
       'unitPrice': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(20000)]),
-    });
+    })
   }
 
   createProduct() {
     if (this.productForm.valid) {
       this.productService.createProduct(this.productForm.value).subscribe(data => {
-        console.log(data);
-        this.goToProductList();
+        console.log(data)
+        this.goToProductList()
       },
-        error => console.log(error));
+        error => console.error(error))
     } else {
-      console.log('Form is not valid');
+      console.log('Form is not valid')
     }
   }
 
   goToProductList() {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/products'])
   }
 
   onSubmit() {
-    this.createProduct();
+    this.createProduct()
   }
 }

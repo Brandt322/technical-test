@@ -1,7 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from 'src/app/models/product';
-import { Router } from '@angular/router';
 import { Modal } from 'flowbite';
 
 @Component({
@@ -10,7 +9,7 @@ import { Modal } from 'flowbite';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements AfterViewInit {
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService) { }
   products: Product[]
   selectedProduct: any = {}
   modal: Modal
@@ -34,10 +33,9 @@ export class ProductListComponent implements AfterViewInit {
   deleteProduct() {
     if (this.productToDelete) {
       this.productService.deleteProduct(this.productToDelete.id).subscribe(data => {
-        console.log(data);
-        this.getProducts();
-        this.closeModal();
-      });
+        this.getProducts()
+        this.closeModal()
+      })
     }
   }
 
@@ -50,21 +48,21 @@ export class ProductListComponent implements AfterViewInit {
 
   openModal(product: any) {
     this.selectedProduct = product
-    this.modal = new Modal(document.getElementById('edit-modal'));
-    this.modal.show();
+    this.modal = new Modal(document.getElementById('edit-modal'))
+    this.modal.show()
   }
 
   openDeleteModal(product: any) {
-    this.productToDelete = product;
-    this.modal = new Modal(document.getElementById('delete-modal'));
-    this.modal.show();
+    this.productToDelete = product
+    this.modal = new Modal(document.getElementById('delete-modal'))
+    this.modal.show()
   }
 
   closeModal() {
     this.modal.hide()
-    let backdrop = document.querySelector('.modal-backdrop');
+    let backdrop = document.querySelector('.modal-backdrop')
     if (backdrop) {
-      backdrop.remove();
+      backdrop.remove()
     }
   }
 }

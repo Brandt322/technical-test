@@ -1,4 +1,5 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://18.228.212.133/order/orderList'
+  production: true,
+  apiUrlOrders: 'http://18.228.212.133/orders',
+  apiUrlProducts: 'http://18.228.212.133/products'
 };
