@@ -1,5 +1,28 @@
 # TechnicalTest
 
+This project is an order management application developed with Angular. It allows users to create and edit orders, each with an order number and a list of products.
+
+## Features
+
+- **Create orders**: Users can create new orders. Each order must have an order number and can have multiple products.
+- **Edit orders**: Users can edit existing orders. They can change the order number and add or remove products.
+- **View products**: Users can view a list of all available products. Each product has a name, a quantity, and a unit price.
+- **Select products**: Users can select products to add them to an order. Selected products are highlighted in the user interface.
+
+## Project Setup
+
+To set up the project on your local environment, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. Run `npm install` to install the dependencies.
+4. Create a `src/environments/environment.prod.ts` file with your environment variables. You can use `src/environments/environment.prod.ts.example` as a template.
+5. Run `ng serve` to start the development server.
+
+## Contributing
+
+Contributions are welcome. Please open an issue to discuss what you would like to change or submit a pull request.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
 
 ## Development server
